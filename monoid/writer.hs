@@ -23,7 +23,9 @@ addDrink "jerky" = ("whiskey", Sum 99)
 addDrink _ = ("beer", Sum 30)
 
 logNumber :: Int -> Writer [String] Int
-logNumber x = Writer (x, ["Got number: " ++ show x])
+logNumber x = do
+  tell ["Got number: " ++ show x]
+  return x  -- Writer (x, ["Got number: " ++ show x])
 
 multWithLog :: Writer [String] Int
 multWithLog = do
